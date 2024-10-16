@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://e81uwbfn7ibk"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_j287d"]
+[ext_resource type="Script" path="res://label.gd" id="2_m7iyw"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_j287d")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "label this is"
+script = ExtResource("2_m7iyw")
