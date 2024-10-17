@@ -7,6 +7,9 @@ var player_name: String = "John Doe"
 var pi: float = 3.14
 var is_active: bool = true
 
+var random_integer = randi() # create integer random number
+var random_float = randf() # create float random number
+
 const GRAVITY = 9.8 #value cannot change at run time
 
 # underscore in front of function name -> function for internal use
@@ -28,6 +31,7 @@ func _input(event):
 		if health > 0:
 			health -= 10
 			# function level variable 
+			# does not have to be at the top, but it is recommended
 			var sentence = reduce_health(player_name, str(health)) #str -> change integer to text
 			$Label.text = sentence 
 		else:
