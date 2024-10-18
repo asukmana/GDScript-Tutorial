@@ -7,6 +7,9 @@ var player_name: String = "John Doe"
 var pi: float = 3.14
 var is_active: bool = true
 
+# implied data type, this one must be integer
+var xp := 0 
+
 var random_integer = randi() # create integer random number
 var random_float = randf() # create float random number
 
@@ -22,6 +25,9 @@ enum PLAYER_STATES { IDLE, WALKING, RUNNING, JUMPING }
 
 @onready var weapon: Sprite2D = $Player/Weapon
 #same as @onready var weapon: get_node("Player/Weapon")
+
+#declare signal with parameter
+signal leveled_up(msg)
 
 # underscore in front of function name -> function for internal use
 
@@ -78,6 +84,11 @@ func _ready() -> void:
 	$Label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	$Label.text = str(health)
 	$Label.modulate = Color.DARK_BLUE
+	
+	$Button.text = "Cetak uang"
+	
+	#connecting signals using code instead of editor
+	#leveled_up.connect(_on_leveled_up)
 
 #change color if spacebar pressed
 func _input(event):
@@ -98,3 +109,18 @@ func _input(event):
 func reduce_health(string1: String, string2: String) -> String:
 	var sentence = string1 + " health is " + string2
 	return sentence
+
+
+func _on_button_pressed() -> void:
+	print("uang")
+
+func _on_timer_timeout() -> void:
+	xp += 5
+	print (xp)
+	if xp >= 20:
+		xp = 0
+		leveled_up.emit("ting tong")
+
+
+func _on_leveled_up(msg) -> void:
+	print (msg)

@@ -27,3 +27,16 @@ text = "whoa"
 [node name="Weapon" type="Sprite2D" parent="Player"]
 
 [node name="Enemy" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 276.0
+offset_top = 318.0
+offset_right = 890.0
+offset_bottom = 581.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="leveled_up" from="." to="." method="_on_leveled_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
