@@ -19,11 +19,3 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 90
 text = "whoa"
-
-[node name="Player" type="Node2D" parent="."]
-
-[node name="Graphics" type="Sprite2D" parent="Player"]
-
-[node name="Weapon" type="Sprite2D" parent="Player"]
-
-[node name="Enemy" type="Node2D" parent="."]

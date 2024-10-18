@@ -12,11 +12,66 @@ var random_float = randf() # create float random number
 
 const GRAVITY = 9.8 #value cannot change at run time
 
+#must be declared before function
+enum PLAYER_STATES { IDLE, WALKING, RUNNING, JUMPING }
+
+#expose a variable in the editor
+@export var my_state : PLAYER_STATES
+#use @export to put variable in inspector
+#@export var my_node: Node
+
+@onready var weapon: Sprite2D = $Player/Weapon
+#same as @onready var weapon: get_node("Player/Weapon")
+
 # underscore in front of function name -> function for internal use
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print text in console
 	print("Hello world")
+	
+	#array
+	var my_array: Array[String] = ["member 1", "member 2", "member 3"]
+	my_array.append("member 4")
+	my_array.remove_at(0)
+	for array_member in my_array:
+		print(array_member)
+		
+	for n in 3:
+		print(n) # 0 1 2
+	
+	var ringing = 0	
+	while ringing < 5:
+		ringing += 1
+		print(ringing)
+		
+	var my_dictionary = {
+		"player 1": "kakak",
+		"player 2": "mas",
+		"player 3": "adik",
+	}
+	my_dictionary["player 4"] = "guest"
+	
+	for dictionary_member in my_dictionary:
+		print(dictionary_member + " is " + my_dictionary[dictionary_member])
+	
+	# dictionary inside dictionary
+	var another_dictionary = {
+		"player 1": {"first name":"kakak","last name":"alya"},
+		"player 2": {"first name":"mas","last name":"hamdan"},
+		"player 3": {"first name":"adik","last name":"hamzah"},
+	}
+	print (another_dictionary["player 3"]["last name"])
+	
+	match my_state:
+		PLAYER_STATES.IDLE:
+			print("idle")
+		PLAYER_STATES.RUNNING:
+			print("running")
+		PLAYER_STATES.WALKING:
+			print("walking")
+		PLAYER_STATES.JUMPING:
+			print("jumping")
 	
 	#print and center text in label
 	$Label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
