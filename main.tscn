@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://e81uwbfn7ibk"]
+[gd_scene load_steps=3 format=3 uid="uid://e81uwbfn7ibk"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_j287d"]
+[ext_resource type="Script" path="res://character_1.gd" id="2_hlbo8"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("kill_character")]
 script = ExtResource("1_j287d")
+kill_character = NodePath("Character 1")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -36,6 +38,21 @@ offset_bottom = 581.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Character 1" type="Node" parent="."]
+script = ExtResource("2_hlbo8")
+profession = "Potion Seller"
+health = 40
+
+[node name="Character 2" type="Node" parent="."]
+script = ExtResource("2_hlbo8")
+profession = "Ex-adventurer"
+health = 20
+
+[node name="Character 3" type="Node" parent="."]
+script = ExtResource("2_hlbo8")
+profession = "Knight"
+health = 150
 
 [connection signal="leveled_up" from="." to="." method="_on_leveled_up"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

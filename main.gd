@@ -10,6 +10,14 @@ var is_active: bool = true
 # implied data type, this one must be integer
 var xp := 0 
 
+#getter setter
+var chance := 0.2
+var chance_pct: int:
+	get:
+		return chance * 100
+	set(value):
+		chance = float(value) / 100.0
+
 var random_integer = randi() # create integer random number
 var random_float = randf() # create float random number
 
@@ -23,6 +31,8 @@ enum PLAYER_STATES { IDLE, WALKING, RUNNING, JUMPING }
 #use @export to put variable in inspector
 #@export var my_node: Node
 
+@export var kill_character : Character
+
 @onready var weapon: Sprite2D = $Player/Weapon
 #same as @onready var weapon: get_node("Player/Weapon")
 
@@ -35,6 +45,13 @@ signal leveled_up(msg)
 func _ready() -> void:
 	#print text in console
 	print("Hello world")
+	
+	print(chance_pct)
+	chance_pct = 40
+	print(chance_pct)
+	
+	#this is how to use class
+	kill_character.die()
 	
 	#array
 	var my_array: Array[String] = ["member 1", "member 2", "member 3"]
